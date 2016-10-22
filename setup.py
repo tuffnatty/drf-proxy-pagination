@@ -12,7 +12,7 @@ description = 'Pagination class for Django REST Framework to choose pagination c
 url = 'https://github.com/tuffnatty/drf-proxy-pagination'
 author = 'Phil Krylov'
 author_email = 'phil.krylov@gmail.com'
-license = 'BSD'
+license = 'MIT'
 
 
 def get_version(package):
