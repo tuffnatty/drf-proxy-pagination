@@ -1,6 +1,7 @@
 import json
 
 from django.test import TestCase
+from django.utils import six
 
 from rest_framework import status
 
@@ -19,7 +20,7 @@ class ProxyPaginationTests(TestCase):
         resp = self.client.get('/data/', HTTP_ACCEPT='application/json')
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         self.assertEqual(resp['Content-Type'], 'application/json')
-        content = json.loads(resp.content)
+        content = json.loads(str(resp.content, encoding='utf8') if six.PY3 else resp.content)
         self.assertIn('next', content)
         self.assertIn('count', content)
         self.assertIn('page=', content['next'])
@@ -29,8 +30,8 @@ class ProxyPaginationTests(TestCase):
         resp = self.client.get('/data/?pager=cursor', HTTP_ACCEPT='application/json')
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         self.assertEqual(resp['Content-Type'], 'application/json')
-        self.assertNotIn('count', resp.content)
-        content = json.loads(resp.content)
+        content = json.loads(str(resp.content, encoding='utf8') if six.PY3 else resp.content)
         self.assertIn('next', content)
+        self.assertNotIn('count', content)
         self.assertNotIn('page=', content['next'])
         self.assertIn('cursor=', content['next'])
