@@ -1,0 +1,4 @@
+site_name: drf-proxy-pagination
+site_description: Pagination class for Django REST Framework to choose pagination class by query parameter
+repo_url: https://github.com/tuffnatty/drf-proxy-pagination
+site_dir: html
