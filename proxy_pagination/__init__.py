@@ -32,3 +32,6 @@ class ProxyPagination(BasePagination):
 
     def get_fields(self, view):
         return self.pager.get_fields(view)
+
+    def get_schema_fields(self, view):
+        return self.pager.get_schema_fields(view)

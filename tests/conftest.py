@@ -42,6 +42,15 @@ def pytest_configure():
             'django.contrib.auth.hashers.MD5PasswordHasher',
             'django.contrib.auth.hashers.CryptPasswordHasher',
         ),
+        REST_FRAMEWORK={
+            'DEFAULT_PAGINATION_CLASS': 'proxy_pagination.ProxyPagination',
+            'PAGE_SIZE': 50,
+        },
+        PROXY_PAGINATION_DEFAULT='rest_framework.pagination.PageNumberPagination',
+        PROXY_PAGINATION_PARAM='pager',
+        PROXY_PAGINATION_MAPPING={
+            'cursor': 'rest_framework.pagination.CursorPagination',
+        },
     )
 
     try:
