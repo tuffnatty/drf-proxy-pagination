@@ -12,7 +12,7 @@ Requirements
 ------------
 
 -  Python (2.7, 3.3, 3.4)
--  Django (1.6+)
+-  Django (1.8+)
 -  Django REST Framework (3.1+)
 
 Installation
