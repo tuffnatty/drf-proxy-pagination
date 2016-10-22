@@ -1,6 +1,7 @@
 from django.conf import settings
 
 from rest_framework.pagination import BasePagination
+from rest_framework.settings import import_from_string
 
 __version__ = '0.1.0'
 
