@@ -3,7 +3,7 @@ from django.conf import settings
 from rest_framework.pagination import BasePagination
 from rest_framework.settings import import_from_string
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 class ProxyPagination(BasePagination):
@@ -15,6 +15,9 @@ class ProxyPagination(BasePagination):
     pager_query_param = settings.PROXY_PAGINATION_PARAM or 'pager'
     mapping = {alias: import_from_string(path, 'PROXY_PAGINATION_MAPPING')
                for alias, path in settings.PROXY_PAGINATION_MAPPING.items()}
+
+    def __init__(self):
+        self.pager = self.default_pager()
 
     def paginate_queryset(self, queryset, request, view=None):
         alias = request.query_params.get(self.pager_query_param)
