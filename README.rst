@@ -31,7 +31,7 @@ and configure it:
 
     REST_FRAMEWORK = {
         ...
-        DEFAULT_PAGINATION_CLASS = 'pagination_proxy.ProxyPagination',
+        'DEFAULT_PAGINATION_CLASS': 'proxy_pagination.ProxyPagination',
     }
     PROXY_PAGINATION_PARAM = 'pager'
     PROXY_PAGINATION_DEFAULT = 'rest_framework.pagination.LimitOffsetPagination'
