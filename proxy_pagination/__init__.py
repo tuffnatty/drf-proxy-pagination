@@ -16,6 +16,14 @@ class ProxyPagination(BasePagination):
     mapping = {alias: import_from_string(path, 'PROXY_PAGINATION_MAPPING')
                for alias, path in settings.PROXY_PAGINATION_MAPPING.items()}
 
+    @property
+    def display_page_controls(self):
+        return self.pager.display_page_controls
+
+    @property
+    def template(self):
+        return self.pager.template
+
     def __init__(self):
         self.pager = self.default_pager()
 
@@ -35,6 +43,9 @@ class ProxyPagination(BasePagination):
 
     def get_fields(self, view):
         return self.pager.get_fields(view)
+
+    def get_html_context(self):
+        return self.pager.get_html_context()
 
     def get_schema_fields(self, view):
         return self.pager.get_schema_fields(view)
