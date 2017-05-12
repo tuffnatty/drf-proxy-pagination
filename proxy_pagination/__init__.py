@@ -20,9 +20,17 @@ class ProxyPagination(BasePagination):
     def display_page_controls(self):
         return self.pager.display_page_controls
 
+    @display_page_controls.setter
+    def display_page_controls(self, value):
+        self.pager.display_page_controls = value
+    
     @property
     def template(self):
         return self.pager.template
+    
+    @template.setter
+    def template(self, value):
+        self.pager.template = value
 
     def __init__(self):
         self.pager = self.default_pager()
