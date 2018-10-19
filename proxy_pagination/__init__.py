@@ -13,8 +13,8 @@ class ProxyPagination(BasePagination):
     default_pager = import_from_string(settings.PROXY_PAGINATION_DEFAULT,
                                        'PROXY_PAGINATION_DEFAULT')
     pager_query_param = settings.PROXY_PAGINATION_PARAM or 'pager'
-    mapping = {alias: import_from_string(path, 'PROXY_PAGINATION_MAPPING')
-               for alias, path in settings.PROXY_PAGINATION_MAPPING.items()}
+    pager_mapping = {alias: import_from_string(path, 'PROXY_PAGINATION_MAPPING')
+                     for alias, path in settings.PROXY_PAGINATION_MAPPING.items()}
 
     @property
     def display_page_controls(self):
@@ -37,7 +37,7 @@ class ProxyPagination(BasePagination):
 
     def paginate_queryset(self, queryset, request, view=None):
         alias = request.query_params.get(self.pager_query_param)
-        self.pager = self.mapping.get(alias, self.default_pager)()
+        self.pager = self.pager_mapping.get(alias, self.default_pager)()
         return self.pager.paginate_queryset(queryset, request, view=view)
 
     def get_paginated_response(self, data):
