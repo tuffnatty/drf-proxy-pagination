@@ -1,6 +1,5 @@
 language: python
-
-sudo: false
+dist: xenial
 
 env:
     - TOX_ENV=py27-flake8
@@ -101,7 +100,7 @@ matrix:
   fast_finish: true
 
 install:
-  - pip install tox
+  - pip install tox tox-venv
 
 script:
     - tox -e $TOX_ENV
