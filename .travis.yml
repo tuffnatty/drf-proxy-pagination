@@ -118,7 +118,7 @@ matrix:
     - { python: "3.7", env: DJANGO=2.1 DRF=3.9}
 
 install:
-  - pip install tox tox-travis tox-venv
+  - pip install "tox<3" tox-travis tox-venv
 
 script:
     - tox
