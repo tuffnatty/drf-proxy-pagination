@@ -21,7 +21,7 @@ Pagination class for Django REST Framework to choose pagination class by query p
 
 ## Requirements
 
-* Python (2.7, 3.3, 3.4)
+* Python (2.7, 3.4)
 * Django (1.8+)
 * Django REST Framework (3.1+)
 
