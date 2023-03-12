@@ -41,10 +41,12 @@ REST_FRAMEWORK = {
     ...
     DEFAULT_PAGINATION_CLASS = 'pagination_proxy.ProxyPagination',
 }
-PROXY_PAGINATION_PARAM = 'pager'
-PROXY_PAGINATION_DEFAULT = 'rest_framework.pagination.LimitOffsetPagination'
-PROXY_PAGINATION_MAPPING = {
-    'cursor': 'rest_framework.pagination.CursorPagination',
+PROXY_PAGINATION = {
+    'PARAM': 'pager',
+    'DEFAULT': 'rest_framework.pagination.LimitOffsetPagination',
+    'MAPPING': {
+        'cursor': 'rest_framework.pagination.CursorPagination',
+    },
 }
 ```
 
