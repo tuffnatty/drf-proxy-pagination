@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.urls import include, re_path
 
 from rest_framework import routers
 
@@ -9,5 +9,5 @@ router = routers.DefaultRouter()
 router.register(r'data', TestViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    re_path(r'^', include(router.urls)),
 ]

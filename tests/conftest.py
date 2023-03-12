@@ -46,10 +46,12 @@ def pytest_configure():
             'DEFAULT_PAGINATION_CLASS': 'proxy_pagination.ProxyPagination',
             'PAGE_SIZE': 50,
         },
-        PROXY_PAGINATION_DEFAULT='rest_framework.pagination.PageNumberPagination',
-        PROXY_PAGINATION_PARAM='pager',
-        PROXY_PAGINATION_MAPPING={
-            'cursor': 'rest_framework.pagination.CursorPagination',
+        PROXY_PAGINATION={
+            "DEFAULT": "rest_framework.pagination.PageNumberPagination",
+            "MAPPING": {
+                'cursor': 'rest_framework.pagination.CursorPagination',
+            },
+            "PARAM": "pager",
         },
     )
 

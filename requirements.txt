@@ -3,13 +3,14 @@ Django>=1.8
 djangorestframework>=3.1
 
 # Test requirements
-pytest-django==3.0.0
-pytest==3.0.0
-pytest-cov==1.6
-flake8==2.2.2
+pytest-django~=4.5.2
+pytest~=7.2.2
+pytest-cov~=4.0.0
+flake8~=6.0.0
+six~=1.16.0
 
 # wheel for PyPI installs
-wheel==0.38.1
+wheel~=0.38.4
 
 # MkDocs for documentation previews/deploys
-mkdocs==0.15.3
+mkdocs~=1.4.2

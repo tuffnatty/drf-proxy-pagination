@@ -1,7 +1,7 @@
-from django.conf import settings
-
 from rest_framework.pagination import BasePagination
 from rest_framework.settings import import_from_string
+
+from proxy_pagination.app_settings import api_settings
 
 __version__ = '0.2.0'
 
@@ -10,11 +10,10 @@ class ProxyPagination(BasePagination):
     """
     A simple configurable pagination proxy.
     """
-    default_pager = import_from_string(settings.PROXY_PAGINATION_DEFAULT,
-                                       'PROXY_PAGINATION_DEFAULT')
-    pager_query_param = settings.PROXY_PAGINATION_PARAM or 'pager'
-    pager_mapping = {alias: import_from_string(path, 'PROXY_PAGINATION_MAPPING')
-                     for alias, path in settings.PROXY_PAGINATION_MAPPING.items()}
+    default_pager = api_settings.DEFAULT
+    pager_query_param = api_settings.PARAM
+    pager_mapping = {alias: import_from_string(path, 'MAPPING')
+                     for alias, path in api_settings.MAPPING.items()}
 
     @property
     def display_page_controls(self):
