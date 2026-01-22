@@ -9,7 +9,7 @@ pytest-cov==1.6
 flake8==2.2.2
 
 # wheel for PyPI installs
-wheel==0.38.1
+wheel==0.46.2
 
 # MkDocs for documentation previews/deploys
 mkdocs==1.2.3
